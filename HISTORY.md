@@ -1,0 +1,14 @@
+# Weblint Version History
+
+## v.NEXT
+
+## v0.1.1
+
+- trim `www.` from hostnames to simplify rules repos
+
+## v0.1.0
+
+- initial MVP
+- inject css from [core-rules repo](core-rules-repo-link)
+
+[core-rules-repo-link]: https://github.com/weblintio/core-rules
