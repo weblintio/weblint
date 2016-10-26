@@ -2,7 +2,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   //console.log('onUpdated', tabId, changeInfo, tab);
   const { hostname, pathname } = new URL(tab.url);
 
-  const cssURL = getCSSURL(hostname);
+  const trimmedHostname = trimHostname(hostname);
+
+  const cssURL = getCSSURL(trimmedHostname);
   const xhttp = new XMLHttpRequest();
   xhttp.open("GET", cssURL, true);
   xhttp.onreadystatechange = function() {
@@ -17,6 +19,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   xhttp.send();
 });
 
+const trimHostname = function (hostname) {
+  return hostname.replace(/^www\./,'');
+};
+
 const getCSSURL = function (hostname) {
   return "https://rawgit.com/weblintio/core-rules/master/rules/"+hostname+".css";
-}
+};
