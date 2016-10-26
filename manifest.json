@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "Weblint",
+  "description": "Cleans the web's lint.",
+  "version": "0.1.0",
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "web_accessible_resources": [
+    "site-rules/*"
+  ],
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "http://*/*",
+    "https://*/*"
+  ]
+}
