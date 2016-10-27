@@ -2,6 +2,10 @@
 
 ## v.NEXT
 
+## v0.1.2
+
+- only run css injection once, when `chrome.tabs.onUpdated` `changeInfo.status == 'loading'`
+
 ## v0.1.1
 
 - trim `www.` from hostnames to simplify rules repos

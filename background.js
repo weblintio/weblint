@@ -1,5 +1,8 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  //console.log('onUpdated', tabId, changeInfo, tab);
+  if (changeInfo.status != 'loading') {
+    return;
+  }
+
   const { hostname, pathname } = new URL(tab.url);
 
   const trimmedHostname = trimHostname(hostname);
