@@ -12,11 +12,18 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   xhttp.open("GET", cssURL, true);
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      const details = {
-        code: this.response,
+
+      const experiment = {
+        code: `
+          var styleElement = document.createElement('style');
+          styleElement.id = 'weblint-style';
+          styleElement.appendChild(document.createTextNode("${this.response.replace(/(\r\n|\n|\r)/gm,"")}"));
+          document.head.appendChild(styleElement);
+          `,
         runAt: 'document_start'
       }
-      chrome.tabs.insertCSS(tabId, details);
+
+      chrome.tabs.executeScript(tabId, experiment);
     }
   };
   xhttp.send();
