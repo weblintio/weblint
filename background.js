@@ -15,8 +15,10 @@ const removeStyle = {
     `,
 }
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (changeInfo.status != 'loading') {
+var isEnabled = true;
+
+const weblint = function (tab, changeInfo) {
+  if (changeInfo && changeInfo.status != 'loading') {
     return;
   }
 
@@ -40,13 +42,23 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
           `,
         runAt: 'document_start'
       }
-
-      chrome.tabs.executeScript(tabId, addStyle);
+      chrome.tabs.executeScript(tab.id, addStyle);
     }
   };
   xhttp.send();
+}
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+  isEnable = true;
+  weblint(tab, changeInfo);
 });
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-  chrome.tabs.executeScript(tab.tabId, removeStyle);
+  if (isEnabled) {
+    chrome.tabs.executeScript(tab.id, removeStyle);
+  }
+  else {
+    weblint(tab);
+  }
+  isEnabled = !isEnabled;
 });
