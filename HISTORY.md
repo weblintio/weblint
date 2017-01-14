@@ -2,6 +2,11 @@
 
 ## v.NEXT
 
+## v0.2.0
+
+- inject css as style element
+- browser action toggles (add/remove) injected style element
+
 ## v0.1.2
 
 - only run css injection once, when `chrome.tabs.onUpdated` `changeInfo.status == 'loading'`
