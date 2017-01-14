@@ -5,6 +5,8 @@
   "description": "Cleans the web's lint.",
   "version": "0.1.2",
 
+  "browser_action": {},
+
   "background": {
     "scripts": ["background.js"]
   },
