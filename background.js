@@ -34,11 +34,12 @@ const weblint = function (tab, changeInfo) {
 
       const addStyle = {
         code: `
-          var styleElement = document.createElement('style');
-          styleElement.id = 'weblint-style';
-          styleElement.appendChild(document.createTextNode("${this.response.replace(/(\r\n|\n|\r)/gm,"")}"));
-          document.head.appendChild(styleElement);
-          document.weblint = true;
+          if (!document.getElementById('weblint-style')) {
+            var styleElement = document.createElement('style');
+            styleElement.id = 'weblint-style';
+            styleElement.appendChild(document.createTextNode("${this.response.replace(/(\r\n|\n|\r)/gm,"")}"));
+            document.head.appendChild(styleElement);
+          }
           `,
         runAt: 'document_start'
       }
