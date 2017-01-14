@@ -2,7 +2,7 @@
 
 Weblint cleans the web's cruft.
 
-Check it out: [weblint.io](http://www.weblint.io)
+Check it out at [weblint.io](http://www.weblint.io)
 
 ## What is this?
 
@@ -30,5 +30,5 @@ navigate around countless UI elements that are only used <1% of the time.
 
 ## Contribute
 
-Add new rules by submitting a PR to the
-[weblintio/core-rules repo](https://github.com/weblintio/core-rules)
+Add new rules by submitting a PR to
+[weblintio/core-rules](https://github.com/weblintio/core-rules)
