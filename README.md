@@ -1,4 +1,4 @@
-# Weblint Chrome Extension
+# Weblint Chrome/Firefox Extension
 
 Weblint cleans the web's cruft.
 
